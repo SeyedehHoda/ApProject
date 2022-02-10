@@ -1,0 +1,9 @@
+User
+username UNIQUE CHAR(200)
+PASSWORD CHAR(64)
+joined_at TIMESTAMP
+
+Bank
+name CHAR(200)
+number INTEGER
+is_valid BOOLEAN
