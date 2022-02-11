@@ -1,5 +1,5 @@
 from DataBaseEngine.SQLHandler import handle_query
-from Application.commonFunctions import wrong_input, choose_from_aliases_menu, add_new_bank_number_handler
+from Application.commonFunctions import choose_from_aliases_menu, add_new_bank_number_handler
 from Application.menuFunctions import menu_user, commonMenuWithBack
 
 
