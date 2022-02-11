@@ -6,6 +6,8 @@ def convert_rows_list_to_rows_dic(rows_list):
 
 
 def typeValidationCheck(column, value):
+    if value == 'null' and not column.isUnique:
+        return
     if column.columnType == 'INTEGER':
         try:
             int(value)

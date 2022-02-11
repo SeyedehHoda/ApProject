@@ -1,9 +1,30 @@
-User
-username UNIQUE CHAR(200)
-PASSWORD CHAR(64)
-joined_at TIMESTAMP
-
-Bank
+users
 name CHAR(200)
-number INTEGER
-is_valid BOOLEAN
+personal_code UNIQUE CHAR(10)
+password CHAR(64)
+phone_number UNIQUE CHAR(15)
+email UNIQUE CHAR(50)
+
+bank_account
+user_id INTEGER
+alias UNIQUE CHAR(100)
+password CHAR(64)
+account_number UNIQUE CHAR(10)
+money INTEGER
+
+transactions
+from_account_id INTEGER
+to_account_id INTEGER
+bill_id CHAR(10)
+loan_id INTEGER
+money INTEGER
+
+bank_account_other_user_aliases
+user_id INTEGER
+account_id INTEGER
+alias UNIQUE CHAR(100)
+
+loans
+account_id INTEGER
+money INTEGER
+loan_date TIMESTAMP

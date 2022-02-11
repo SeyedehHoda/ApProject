@@ -1,4 +1,0 @@
-id name number is_valid
-1 salam 0917 true
-2 aleyk 2020 false
-3 karim 3312 false 
