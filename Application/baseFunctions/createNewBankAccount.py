@@ -6,9 +6,13 @@ import random
 
 
 def create_bank_account_help():
-    print("Please enter your bank account information in following order")
-    print("account_alias password")
-    commonMenuWithBack()
+    password = input('please enter a password for your new account or .. for getting back: ')
+    if password == '..':
+        return None, None
+    alias = input('You can use an alias for your new account, input the alias or NO for skipping this part: ')
+    if alias == 'NO':
+        alias = None
+    return password, alias
 
 
 successful_message = '***\nYour bank account successfully created, you can manage it in user menu\n***'
@@ -21,29 +25,32 @@ def generate_new_account_number():
     rest_number_len = 10 - len(str(new_id))
     for _ in range(rest_number_len):
         account_number += str(random.randint(0, 9))
-    return account_number
+    return new_id, account_number
 
 
 def create_new_bank_account(user_id):
-    create_bank_account_help()
     while True:
-        order = input().split()
-        if order[0] == '*':
-            create_bank_account_help()
-        elif order[0] == '..':
+        password, alias = create_bank_account_help()
+        if not password:
             print("***\nBack To Menu\n***")
             menu_user()
             break
-        else:
-            if len(order) != 2:
-                wrong_input()
-                continue
-            try:
-                values = str(user_id) + ',' + ','.join(order) + ',' + generate_new_account_number() + ',0,false'
-                res = handle_query(f'INSERT INTO bank_account VALUES ({values})')
-                if res[0]:
+        try:
+            new_id, account_number = generate_new_account_number()
+            values = str(user_id) + ',' + password + ',' + account_number + ',0'
+            res = handle_query(f'INSERT INTO bank_account VALUES ({values})')
+            if res[0]:
+                if not alias:
                     print(successful_message)
+                    print(f'This is your new account number: {account_number}')
                     menu_user()
                     break
-            except:
-                wrong_input()
+                values = str(user_id) + ',' + str(user_id) + ',' + str(new_id) + ',' + alias
+                res = handle_query(f'INSERT INTO bank_account_common_used_aliases VALUES ({values})')
+                if res[0]:
+                    print(successful_message)
+                    print(f'This is your new account number: {account_number}')
+                    menu_user()
+                    break
+        except:
+            wrong_input()

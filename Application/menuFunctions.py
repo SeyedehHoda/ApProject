@@ -28,6 +28,4 @@ def menu_account():
     print("1. take money from account")
     print("2. put money in account")
     print("3. view all account transactions")
-    print("4. change account alias")
-    print("5. make account common used")
     commonMenuWithBack()

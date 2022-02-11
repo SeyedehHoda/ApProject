@@ -2,6 +2,7 @@ from Application.menuFunctions import *
 from Application.baseFunctions.register import register
 from Application.baseFunctions.login import login
 from Application.baseFunctions.createNewBankAccount import create_new_bank_account
+from Application.baseFunctions.makeTrannsaction import make_transaction
 from Application.commonFunctions import wrong_input
 
 menu_guest()
@@ -29,7 +30,7 @@ while True:
         elif order == '2':
             accounts_manager()
         elif order == '3':
-            make_transaction()
+            make_transaction(login_user_id)
         elif order == '4':
             pay_bill()
         elif order == '5':

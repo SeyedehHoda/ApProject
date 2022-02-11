@@ -7,11 +7,9 @@ email UNIQUE CHAR(50)
 
 bank_account
 user_id INTEGER
-alias UNIQUE CHAR(100)
 password CHAR(64)
 account_number UNIQUE CHAR(10)
 money INTEGER
-is_common_used BOOLEAN
 
 transactions
 from_account_id INTEGER
@@ -20,8 +18,9 @@ bill_id CHAR(10)
 loan_id INTEGER
 money INTEGER
 
-bank_account_other_user_aliases
-user_id INTEGER
+bank_account_common_used_aliases
+alias_user_id INTEGER
+owner_user_id INTEGER
 account_id INTEGER
 alias UNIQUE CHAR(100)
 

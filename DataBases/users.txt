@@ -1,2 +1,3 @@
-id name personal_code password phone_number email 
-1 Ali 5320079427 12345 0917551 bagher 
+id name personal_code password phone_number email
+1 Hoda 34900 1234 0917 safi
+2 Jafar 12312 1234 0934 jj@ 

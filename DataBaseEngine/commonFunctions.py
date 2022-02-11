@@ -35,12 +35,14 @@ def typeValidationCheck(column, value):
                 raise Exception(value + ' is not a valid date')
 
 
-def isItValidToAddThisColumnToTableRow(table, column_name, value):
+def isItValidToAddThisColumnToTableRow(table, column_name, value, newId):
     column = table.get_column_with_column_name(column_name)
     typeValidationCheck(column, value)
     if column.isUnique:
-        if table.get_row_with_unique_key(column.columnName, value):
-            raise Exception('Already have a row with ' + column_name + "=" + value + " in " + table.tableName + " table")
+        row = table.get_row_with_unique_key(column.columnName, value)
+        if row:
+            if int(row['id']) != int(newId):
+                raise Exception('Already have a row with ' + column_name + "=" + value + " in " + table.tableName + " table")
 
 
 def generate_table_line_from_values_str(table, values_str, _id=None):
@@ -53,7 +55,7 @@ def generate_table_line_from_values_str(table, values_str, _id=None):
     if len(values_list) > len(keys_list):
         raise Exception('more arguments than keys')
     for key, value in zip(keys_list, values_list):
-        isItValidToAddThisColumnToTableRow(table, key, value)
+        isItValidToAddThisColumnToTableRow(table, key, value, newId)
         line += value + ' '
     return line
 
