@@ -1,6 +1,7 @@
 from Application.menuFunctions import *
 from Application.baseFunctions.register import register
 from Application.baseFunctions.login import login
+from Application.baseFunctions.createNewBankAccount import create_new_bank_account
 from Application.commonFunctions import wrong_input
 
 menu_guest()
@@ -24,7 +25,7 @@ while True:
         if order == '*':
             menu_user()
         elif order == '1':
-            create_new_bank_account()
+            create_new_bank_account(login_user_id)
         elif order == '2':
             accounts_manager()
         elif order == '3':
