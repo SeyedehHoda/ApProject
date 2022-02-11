@@ -9,7 +9,7 @@ def register_help():
     commonMenuWithBack()
 
 
-successful_message = 'Yoh have been registered successfully'
+successful_message = '***\nYoh have been registered successfully\n***'
 
 
 def register():
@@ -31,7 +31,9 @@ def register():
                 res = handle_query(f'INSERT INTO users VALUES ({values})')
                 if res[0]:
                     print(successful_message)
-                    menu_user()
+                    menu_guest()
                     break
+                if not res[0]:
+                    wrong_input()
             except:
                 wrong_input()

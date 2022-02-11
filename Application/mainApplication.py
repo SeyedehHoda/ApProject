@@ -1,5 +1,6 @@
 from Application.menuFunctions import *
 from Application.baseFunctions.register import register
+from Application.baseFunctions.login import login
 from Application.commonFunctions import wrong_input
 
 menu_guest()
