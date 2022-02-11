@@ -1,3 +1,3 @@
-id from_account_id to_account_id bill_id loan_id money 
-1 5 4 null null 1000
-2 5 null 12312 null 500 
+id from_account_id to_account_id bill_id money
+1 5 4 null 1000
+2 5 null 12312 500

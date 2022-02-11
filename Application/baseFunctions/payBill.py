@@ -16,7 +16,7 @@ def payBill(user_id):
     account_id = get_account_id(user_id, 'payBill')
     if account_id == 'back_code':
         return
-    account = handle_query(f'SELECT FROM bank_account WHERE id=={account_id}')[1][0]
+    account = handle_query(f'SELECT FROM bank_account WHERE id=={account_id} AND is_active==true')[1][0]
     bill_help()
     while True:
         order = input().split()
@@ -36,10 +36,10 @@ def payBill(user_id):
                 if bill_amount > int(account['money']):
                     print('Error: Bill amount is more than your account money')
                     return payBill(user_id)
-                valuesTransaction = str(account_id) + ',null,' + str(bill_id) + ',null,' + str(bill_amount)
+                valuesTransaction = str(account_id) + ',null,' + str(bill_id) + ',' + str(bill_amount)
                 resTransaction = handle_query(f'INSERT INTO transactions VALUES ({valuesTransaction})')
                 valuesAccount = account['user_id'] + ',' + account['password'] \
-                          + ',' + account['account_number'] + ',' + str(int(account['money']) - bill_amount)
+                          + ',' + account['account_number'] + ',' + str(int(account['money']) - bill_amount) + ',true'
                 resAccount = handle_query(f'UPDATE bank_account where id=={account_id} VALUES ({valuesAccount})')
                 if not resAccount[0] or not resTransaction[0]:
                     wrong_input()

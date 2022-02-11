@@ -18,8 +18,7 @@ def menu_user():
     print("2. manage all of my accounts")
     print("3. make transaction")
     print("4. pay bill")
-    print("5. get loan")
-    print("6. logout user from the system")
+    print("5. logout user from the system")
     commonMenuWithoutBack()
 
 

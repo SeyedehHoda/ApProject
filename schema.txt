@@ -10,12 +10,12 @@ user_id INTEGER
 password CHAR(64)
 account_number UNIQUE CHAR(10)
 money INTEGER
+is_active BOOLEAN
 
 transactions
 from_account_id INTEGER
 to_account_id INTEGER
 bill_id CHAR(10)
-loan_id INTEGER
 money INTEGER
 
 bank_account_common_used_aliases
@@ -23,8 +23,3 @@ alias_user_id INTEGER
 owner_user_id INTEGER
 account_id INTEGER
 alias UNIQUE CHAR(100)
-
-loans
-account_id INTEGER
-money INTEGER
-loan_date TIMESTAMP

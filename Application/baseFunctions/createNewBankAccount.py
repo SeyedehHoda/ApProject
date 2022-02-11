@@ -37,7 +37,7 @@ def create_new_bank_account(user_id):
             break
         try:
             new_id, account_number = generate_new_account_number()
-            values = str(user_id) + ',' + password + ',' + account_number + ',0'
+            values = str(user_id) + ',' + password + ',' + account_number + ',0,true'
             res = handle_query(f'INSERT INTO bank_account VALUES ({values})')
             if res[0]:
                 if not alias:

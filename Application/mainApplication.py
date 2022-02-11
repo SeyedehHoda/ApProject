@@ -1,3 +1,4 @@
+from Application.baseFunctions.accountsManager import list_all_user_accounts
 from Application.baseFunctions.payBill import payBill
 from Application.menuFunctions import *
 from Application.baseFunctions.register import register
@@ -29,14 +30,12 @@ while True:
         elif order == '1':
             create_new_bank_account(login_user_id)
         elif order == '2':
-            accounts_manager()
+            list_all_user_accounts(login_user_id)
         elif order == '3':
             make_transaction(login_user_id)
         elif order == '4':
             payBill(login_user_id)
         elif order == '5':
-            get_loan_from_bank()
-        elif order == '6':
             login_user_id = None
             print('***\nSuccessfully logged out from bank\n***')
             menu_guest()

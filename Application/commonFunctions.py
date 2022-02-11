@@ -24,7 +24,7 @@ def convert_aliases_list_to_accounts_dic(aliases):
     accounts_dic = {}
     for alias_dic in aliases:
         account_id = alias_dic['account_id']
-        account = handle_query(f'SELECT FROM bank_account WHERE id=={account_id}')[1][0]
+        account = handle_query(f'SELECT FROM bank_account WHERE id=={account_id} AND is_active==true')[1][0]
         accounts_dic[alias_dic['alias']] = account
     return accounts_dic
 
@@ -57,7 +57,7 @@ def choose_from_aliases_menu(alias_user_id, owner_user_id):
 def add_new_bank_number_handler(user_id):
     while True:
         bank_number = input('please enter the bank number: ')
-        bank_account = handle_query(f'SELECT FROM bank_account WHERE account_number=={bank_number}')[1]
+        bank_account = handle_query(f'SELECT FROM bank_account WHERE account_number=={bank_number} AND is_active==true')[1]
         if len(bank_account):
             bank_account = bank_account[0]
             order = input(
@@ -92,7 +92,7 @@ def get_account_id(user_id, where):
         if order == '1':
             account_id = choose_from_aliases_menu(
                 user_id,
-                None if 'destination' else user_id
+                user_id if 'origin' else None
             )
         elif order == '2':
             account_id = add_new_bank_number_handler(user_id)
