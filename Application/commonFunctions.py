@@ -1,4 +1,5 @@
 from DataBaseEngine.SQLHandler import handle_query
+from Application.menuFunctions import commonMenuWithBack, menu_user
 
 
 def wrong_input():
@@ -74,3 +75,34 @@ def add_new_bank_number_handler(user_id):
                     order = input('enter new alias or NO for getting back')
         else:
             print('wrong bank number')
+
+
+def account_number_menu(where):
+    print(f'Please choose your {where} account from your common used list or enter your {where} account number')
+    print("1. choose from aliases")
+    print("2. Enter new account number")
+    commonMenuWithBack()
+
+
+def get_account_id(user_id, where):
+    account_number_menu(where)
+    while True:
+        order = input()
+        account_id = None
+        if order == '1':
+            account_id = choose_from_aliases_menu(
+                user_id,
+                None if 'destination' else user_id
+            )
+        elif order == '2':
+            account_id = add_new_bank_number_handler(user_id)
+        elif order == '..':
+            print("***\nBack To Menu\n***")
+            menu_user()
+            return 'back_code'
+        elif order == '*':
+            account_number_menu(where)
+        if account_id:
+            return account_id
+        else:
+            account_number_menu(where)

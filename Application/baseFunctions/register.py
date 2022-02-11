@@ -9,7 +9,7 @@ def register_help():
     commonMenuWithBack()
 
 
-successful_message = '***\nYoh have been registered successfully\n***'
+successful_message = '***\nYou have been registered successfully\n***'
 
 
 def register():

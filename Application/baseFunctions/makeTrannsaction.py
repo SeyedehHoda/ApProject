@@ -1,37 +1,6 @@
 from DataBaseEngine.SQLHandler import handle_query
-from Application.commonFunctions import choose_from_aliases_menu, add_new_bank_number_handler
-from Application.menuFunctions import menu_user, commonMenuWithBack
-
-
-def menu(where):
-    print(f'Please choose your account from your common used list or enter your {where} account number')
-    print("1. choose from aliases")
-    print("2. Enter new account number")
-    commonMenuWithBack()
-
-
-def get_account_id(user_id, where):
-    menu(where)
-    while True:
-        order = input()
-        account_id = None
-        if order == '1':
-            account_id = choose_from_aliases_menu(
-                user_id,
-                None if 'destination' else user_id
-            )
-        elif order == '2':
-            account_id = add_new_bank_number_handler(user_id)
-        elif order == '..':
-            print("***\nBack To Menu\n***")
-            menu_user()
-            return 'back_code'
-        elif order == '*':
-            menu(where)
-        if account_id:
-            return account_id
-        else:
-            menu(where)
+from Application.commonFunctions import get_account_id
+from Application.menuFunctions import menu_user
 
 
 def make_transaction(user_id):

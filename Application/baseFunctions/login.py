@@ -9,7 +9,7 @@ def login_help():
     commonMenuWithBack()
 
 
-successful_message = '***\nYoh have been logged in successfully\n***'
+successful_message = '***\nYou have been logged in successfully\n***'
 
 
 def login():
