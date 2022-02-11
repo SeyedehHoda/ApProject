@@ -1,6 +1,6 @@
 from DataBaseEngine.SQLHandler import handle_query
 from Application.commonFunctions import wrong_input
-from Application.menuFunctions import menu_guest, menu_user, commonMenuWithBack
+from Application.menuFunctions import menu_guest, commonMenuWithBack
 
 
 def register_help():
